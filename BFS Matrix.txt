@@ -1,0 +1,59 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <queue> 
+using namespace std;
+
+
+int main() {
+
+    int vert;
+    cin >> vert;
+    char name[20];
+  
+    for( int i = 0; i < vert; i++){
+        cin  >> skipws >> name[i];
+         //n[i].visited =  false;
+    }
+    
+     
+    int matrix[vert][vert];
+    for( int j = 0; j < vert; j++){
+        for( int k = 0; k < vert; k++){
+        cin  >> matrix[j][k];
+     }
+    }
+     bool visited[vert];
+    for(int t = 0; t< vert; t++){
+        visited[t] = false;
+    }
+ 
+    queue<int>outputList;
+    outputList.push(0);
+    
+    visited[0] = true;
+    
+    while(!outputList.empty()){
+        
+        int f = outputList.front();
+        outputList.pop();
+       
+        
+        cout << name[f] << " ";
+        
+     
+        for(int t = 0; t< vert; t++){
+            if(!(visited[t]) && (matrix[f][t] == 1)){
+              outputList.push(t);
+                visited[t] = true;
+           
+        }
+      }              
+    }
+    return 0;
+}
+ 
+ 
+
